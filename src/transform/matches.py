@@ -7,7 +7,8 @@ with open("data/raw_matches.json", "r") as file:
 def transform_match(match):
     clean_match = {
         "match_id": match["id"],
-        "season": match["season"]["id"],
+        "season_id": match["season"]["id"],
+        "season_year": int(match["season"]["startDate"][:4]),
         "date": match["utcDate"],
         "matchday": match["matchday"],
         "home_team_id": match["homeTeam"]["id"],
@@ -19,7 +20,6 @@ def transform_match(match):
         "winner": match["score"]["winner"],
         "referee_name": match["referees"][0]["name"]
     }
-
     return clean_match
 
 
